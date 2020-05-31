@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <div>
+      <h1>中国</h1>
       <h3>中国省份</h3>
       <ul>
         <li v-for="(item,i) in list" :key="i">{{item.name}}</li>
