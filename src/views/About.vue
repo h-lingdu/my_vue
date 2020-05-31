@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
     <div>
+      <h3>中国省份</h3>
       <ul>
         <li v-for="(item,i) in list" :key="i">{{item.name}}</li>
       </ul>
@@ -37,5 +37,20 @@ export default {
 <style scoped>
 li {
   list-style: none;
+  width: 10rem;
+  height: 5rem;
+  line-height: 5rem;
+}
+li:nth-child(2n+1){
+  color: red;
+  background-color: antiquewhite;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-inline-start: 0;
 }
 </style>
