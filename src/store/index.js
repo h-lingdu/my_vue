@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     txt: '今天天气很热！',
     msg: "Welcome！ 韩金辉 ",
-    flag: false
+    flag: false,
+    num: 2020
   },
   mutations: {
     modifyWeather(state, payload) {
@@ -15,17 +16,28 @@ export default new Vuex.Store({
     },
     modifyInfo(state, payload) {
       state.msg = payload.msg,
-      state.flag = payload.flag
-    }
+        state.flag = payload.flag
+    },
+    add(state, payload) {
+      state.num += payload
+    },
+    reduce(state, payload) {
+      state.num -= payload
+    }                                     //第四步
   },
   actions: {
-    weather({ commit, dispatch }, payload) {
+    modifyWeather({ commit }, payload) {
       commit('modifyWeather', payload)
     },
-    modify({ commit, dispatch }, payload) {
-      console.log(payload)
+    modify({ commit }, payload) {
       commit('modifyInfo', payload)
-    }
+    },
+    add({ commit }, payload) {
+      commit('add', payload)
+    },
+    reduce({ commit }, payload) {
+      commit('reduce', payload)
+    }                                 //第三步
   },
   modules: {
   }
