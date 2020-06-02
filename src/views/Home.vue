@@ -27,7 +27,7 @@ export default {
       });
     },
     modifyWeather() {
-      this.$store.dispatch("weather", "今天天气很凉爽！要下雨的样子。");
+      this.$store.dispatch("weather", "今天天气很凉爽！要下雨的样子!!!");
     }
   }
 };
