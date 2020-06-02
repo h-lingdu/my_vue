@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <HelloWorld :msg='this.msg' />
-    <el-button type="primary" @click="modify" :disabled='this.flag'>点击修改</el-button>
+    <HelloWorld :msg="this.$store.state.msg" />
+    <el-button type="primary" @click="modify" :disabled="this.$store.state.flag">点击修改</el-button>
+    <el-alert :title="this.$store.state.txt" center type="error"></el-alert>
+    <el-button type="primary" @click="modifyWeather">点击修改描述</el-button>
   </div>
 </template>
 
@@ -12,18 +14,20 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "Home",
   data() {
-    return {
-      msg: "Welcome！ 韩金辉 ",
-      flag:false
-    };
+    return {};
   },
   components: {
     HelloWorld
   },
   methods: {
-    modify(){
-      this.msg = '中国少年，你好！！！',
-      this.flag = true
+    modify() {
+      this.$store.dispatch("modify", {
+        msg: "中国少年，你好！！！",
+        flag: true
+      });
+    },
+    modifyWeather() {
+      this.$store.dispatch("weather", "今天天气很凉爽，看着要下雨拉。");
     }
   }
 };
