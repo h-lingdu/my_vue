@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     modify(){
-      this.msg = '少年，你好！！！！',
+      this.msg = '中国少年，你好！！！',
       this.flag = true
     }
   }
