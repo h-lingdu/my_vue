@@ -7,14 +7,15 @@
     <h4>{{msg}}</h4>
     <h4>数字-----{{num}}</h4>
     <el-button type="primary" @click="add(10)">数字+10</el-button>
-    <el-button type="success" @click="reduce(10)">数字-10</el-button>   <!--第一步-->
+    <el-button type="success" @click="reduce(10)">数字-10</el-button>
+    <!--第一步-->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import {mapState,mapActions,mapMutations} from 'vuex'
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "Home",
@@ -24,10 +25,8 @@ export default {
   components: {
     HelloWorld
   },
-  computed:{
-    ...mapState([
-      'msg','num'
-    ])
+  computed: {
+    ...mapState(["msg", "num"])
   },
   methods: {
     modify() {
@@ -40,11 +39,11 @@ export default {
     //   this.$store.dispatch("modifyWeather", "今天天气很凉爽！要下雨的样子!!!");
     // },
     ...mapActions([
-      'reduce','add','modifyWeather'      //第二步  进入index.js文件中
+      "reduce",
+      "add",
+      "modifyWeather" //第二步  进入store/index.js文件中
     ]),
-    ...mapMutations([
-      
-    ])
+    ...mapMutations([]),
   }
 };
 </script>
