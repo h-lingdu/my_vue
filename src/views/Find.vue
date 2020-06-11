@@ -76,6 +76,8 @@ export default {
         this.tableData = list;
         this.loading = false
         this.total = res.data.total
+      }).catch(err => {
+        this.loading = false
       });
     },
     // 改变每页条数
@@ -93,7 +95,7 @@ export default {
     // 改变页数
     handleCurrentChange(value){
       let params = {
-        start:value * 10 - 10,
+        start:value * this.pageSize - this.pageSize,
         count:this.pageSize
       }
       this.tableData = []
