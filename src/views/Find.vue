@@ -28,14 +28,14 @@
     </el-table>
     <!-- 分页 -->
     <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage"
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next"
-        :total="total">
-      </el-pagination>
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page.sync="currentPage"
+      :page-sizes="[10, 20, 30, 40]"
+      :page-size="pageSize"
+      layout="total, sizes, prev, pager, next"
+      :total="total"
+    ></el-pagination>
   </div>
 </template>
 
@@ -48,68 +48,68 @@ export default {
     return {
       visibed: false,
       tableData: [],
-      loading:true,
-      total:0, //总数
-      currentPage:1, //当前页
-      pageSize:10  //每页多少条
+      loading: true,
+      total: 0, //总数
+      currentPage: 1, //当前页
+      pageSize: 10 //每页多少条
     };
   },
   computed: {},
   watch: {},
   methods: {
-
     //电影数据
     getData(params) {
-      getMovieData(params).then(res => {
-        let list = [];
-        for (let item of res.data.subjects) {
-          let obj = {};
-          obj.id = item.id,
-          obj.title = item.title,
-          obj.year = item.year,
-          obj.genres = item.genres.join(','),
-          obj.rating = item.rating.average,
-          obj.img = item.images.small,
-          obj.directors = item.directors[0].name;
-          list.push(obj);
-        }
-        this.tableData = list;
-        this.loading = false
-        this.total = res.data.total
-      }).catch(err => {
-        this.loading = false
-      });
+      getMovieData(params)
+        .then(res => {
+          let list = [];
+          for (let item of res.data.subjects) {
+            let obj = {};
+            obj.id = item.id;
+            obj.title = item.title;
+            obj.year = item.year;
+            obj.genres = item.genres.join(",");
+            obj.rating = item.rating.average;
+            obj.img = item.images.small;
+            obj.directors = item.directors[0].name;
+            list.push(obj);
+          }
+          this.tableData = list;
+          this.loading = false;
+          this.total = res.data.total;
+        })
+        .catch(err => {
+          this.loading = false;
+        });
     },
     // 改变每页条数
-    handleSizeChange(value){
-      this.pageSize = value
-      this.currentPage = 1
+    handleSizeChange(value) {
+      this.pageSize = value;
+      this.currentPage = 1;
       let params = {
-        start:this.currentPage * 10 - 10,
-        count:this.pageSize
-      }
-      this.tableData = []
-      this.loading = true
-      this.getData(params)
+        start: this.currentPage * 10 - 10,
+        count: this.pageSize
+      };
+      this.tableData = [];
+      this.loading = true;
+      this.getData(params);
     },
     // 改变页数
-    handleCurrentChange(value){
+    handleCurrentChange(value) {
       let params = {
-        start:value * this.pageSize - this.pageSize,
-        count:this.pageSize
-      }
-      this.tableData = []
-      this.loading = true
-      this.getData(params)
-      
+        start: value * this.pageSize - this.pageSize,
+        count: this.pageSize
+      };
+      this.tableData = [];
+      this.loading = true;
+      this.getData(params);
     }
   },
   mounted() {
-    let params ={
+    let params = {
       //后台数据：start表示从哪一条数据查（默认为0）count表示查多少条
-      start:this.currentPage * 10 - 10,
-      count:this.pageSize
-    }
+      start: this.currentPage * 10 - 10,
+      count: this.pageSize
+    };
     this.getData(params);
   }
 };
