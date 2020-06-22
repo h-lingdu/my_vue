@@ -11,8 +11,8 @@
       stripe
       fit
       style="width: 100%"
-      :header-cell-style="{'text-align':'center'}"
-      :cell-style="{'text-align':'center'}"
+      :header-cell-style="{ 'text-align': 'center' }"
+      :cell-style="{ 'text-align': 'center' }"
     >
       <el-table-column prop="id" label="电影ID"></el-table-column>
       <el-table-column prop="title" label="电影名"></el-table-column>
@@ -51,7 +51,7 @@ export default {
       loading: true,
       total: 0, //总数
       currentPage: 1, //当前页
-      pageSize: 10 //每页多少条
+      pageSize: 10, //每页多少条
     };
   },
   computed: {},
@@ -60,7 +60,7 @@ export default {
     //电影数据
     getData(params) {
       getMovieData(params)
-        .then(res => {
+        .then((res) => {
           let list = [];
           for (let item of res.data.subjects) {
             let obj = {};
@@ -77,7 +77,7 @@ export default {
           this.loading = false;
           this.total = res.data.total;
         })
-        .catch(err => {
+        .catch((err) => {
           this.loading = false;
         });
     },
@@ -87,7 +87,7 @@ export default {
       this.currentPage = 1;
       let params = {
         start: this.currentPage * 10 - 10,
-        count: this.pageSize
+        count: this.pageSize,
       };
       this.tableData = [];
       this.loading = true;
@@ -97,23 +97,22 @@ export default {
     handleCurrentChange(value) {
       let params = {
         start: value * this.pageSize - this.pageSize,
-        count: this.pageSize
+        count: this.pageSize,
       };
       this.tableData = [];
       this.loading = true;
       this.getData(params);
-    }
+    },
   },
   mounted() {
     let params = {
       //后台数据：start表示从哪一条数据查（默认为0）count表示查多少条
       start: this.currentPage * 10 - 10,
-      count: this.pageSize
+      count: this.pageSize,
     };
     this.getData(params);
-  }
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
