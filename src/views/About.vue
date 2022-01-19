@@ -1,36 +1,40 @@
 <template>
   <div class="about">
     <div>
-      <h1>中国</h1>
-      <h3>中国省份</h3>
+      <Map></Map>
+      <!-- <h3>中国省份</h3>
       <ul>
         <li v-for="(item,i) in list" :key="i">{{item.name}}</li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 </template>
 
 <script>
 import jsonp from "jsonp";
+import Map from "../components/Map.vue";
 export default {
   data() {
     return {
       list: []
     };
   },
+  components: {
+    Map
+  },
   methods: {
-    getData() {
-      jsonp(
-        "https://interface.sina.cn/news/wap/fymap2020_data.d.json?_=1580892522427",
-        (err, res) => {
-          console.log(res.data.list);
-          this.list = res.data.list;
-        }
-      );
-    }
+    // getData() {
+    //   jsonp(
+    //     "https://interface.sina.cn/news/wap/fymap2020_data.d.json?_=1580892522427",
+    //     (err, res) => {
+    //       console.log(res.data.list);
+    //       this.list = res.data.list;
+    //     }
+    //   );
+    // }
   },
   mounted() {
-    this.getData();
+    // this.getData();
   }
 };
 </script>
@@ -42,11 +46,11 @@ li {
   height: 5rem;
   line-height: 5rem;
 }
-li:nth-child(2n+1){
+li:nth-child(2n + 1) {
   color: red;
   background-color: antiquewhite;
 }
-ul{
+ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
