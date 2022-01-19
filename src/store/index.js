@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    txt: "今天天气很热！",
+    txt: "今天天气有点冷！",
     msg: "Welcome！this is page 。",
     flag: false,
     num: 2020,

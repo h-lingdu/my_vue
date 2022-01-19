@@ -4,7 +4,7 @@
     <el-button type="primary" @click="modify" :disabled="this.$store.state.flag">点击修改</el-button>
     <el-alert :title="this.$store.state.txt" center type="error"></el-alert>
     <!--第一步-->
-    <el-button type="primary" @click="modifyWeather('今天天气很凉爽，适合跑步！！！')">点击修改描述</el-button>
+    <el-button type="primary" @click="modifyWeather('今天天气适合跑步！！！')">点击修改描述</el-button>
     <h4>{{msg}}</h4>
     <h4>数字-----{{num}}</h4>
     <el-button type="primary" @click="add(10)">数字+10</el-button>
