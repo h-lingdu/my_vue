@@ -62,7 +62,7 @@ export default {
       getMovieData(params)
         .then((res) => {
           let list = [];
-          for (let item of res.data.subjects) {
+          for (let item of res.data.result) {
             let obj = {};
             obj.id = item.id;
             obj.title = item.title;
@@ -86,8 +86,8 @@ export default {
       this.pageSize = value;
       this.currentPage = 1;
       let params = {
-        start: this.currentPage * 10 - 10,
-        count: this.pageSize,
+        pagenum: this.currentPage - 1,
+        pagesize: this.pageSize,
       };
       this.tableData = [];
       this.loading = true;
@@ -96,8 +96,8 @@ export default {
     // 改变页数
     handleCurrentChange(value) {
       let params = {
-        start: value * this.pageSize - this.pageSize,
-        count: this.pageSize,
+        pagenum: value- 1,
+        pagesize: this.pageSize,
       };
       this.tableData = [];
       this.loading = true;
@@ -106,9 +106,9 @@ export default {
   },
   mounted() {
     let params = {
-      //后台数据：start表示从哪一条数据查（默认为0）count表示查多少条
-      start: this.currentPage * 10 - 10,
-      count: this.pageSize,
+      //后台数据：pagenum表示从哪一条数据查（默认为0）pagesize表示查多少条
+      pagenum: this.currentPage - 1,
+      pagesize: this.pageSize,
     };
     this.getData(params);
   },
